@@ -29,9 +29,9 @@ def generate(input):
 # Initialize
 with gr.Blocks() as main:
     with gr.Row():
-        input = gr.Textbox(label="Scope", lines=1)
-        run = gr.Button("▶️")
-        output = gr.Textbox(label="Result", lines=1)
+        input = gr.Textbox(label="Input", lines=1)
+        run = gr.Button("▶")
+        output = gr.Textbox(label="Output", lines=1)
 
     run.click(generate, inputs=[input], outputs=[output])
 
