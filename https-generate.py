@@ -24,7 +24,7 @@ def https_predict(url, session_hash, fn_index, data, headers):
 def generate(input):
     json_data = json.loads(input)
     data = https_predict(*json_data)
-    return data
+    return json.dumps(data)
 
 # Initialize
 with gr.Blocks() as main:
