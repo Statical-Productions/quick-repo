@@ -23,7 +23,7 @@ def https_predict(url, session_hash, fn_index, data, headers):
 
 def generate(input):
     json_data = json.loads(input)
-    data = https_predict(json_data[0], json_data[1], json_data[2], json_data[3], json_data[4])
+    data = https_predict(*json_data)
     return data
 
 # Initialize
