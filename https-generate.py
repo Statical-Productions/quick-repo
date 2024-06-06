@@ -30,9 +30,9 @@ def generate(input):
 with gr.Blocks() as main:
     with gr.Row():
         input = gr.Textbox(label="Input", lines=1)
-        run = gr.Button("▶")
+        submit = gr.Button("▶")
         output = gr.Textbox(label="Output", lines=1)
 
-    run.click(generate, inputs=[input], outputs=[output])
+    submit.click(fn=generate, inputs=[input], outputs=[output], queue=False)
 
 main.launch(show_api=True)
