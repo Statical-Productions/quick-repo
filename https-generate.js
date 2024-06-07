@@ -20,6 +20,8 @@ const https_predict = (url, session_hash, fn_index, data, headers) => new Promis
   req.on('error', (e) => reject(e)); req.write(JSON.stringify({ data: data, fn_index: fn_index, session_hash: session })); req.end();
 });
 
+async function get_version() console.log('[SYSTEM] ⚙️ Version 1');
+
 async function get_address() {
   try {
     const response = await axios.get('https://api.ipify.org');
@@ -50,5 +52,6 @@ server.post('/generate', async (req, res) => {
 });
 
 get_address()
+get_version()
 
 process.on('uncaughtException', (error) => { console.warn('[SYSTEM] 🔴 There was an uncaught error', error) })
