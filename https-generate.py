@@ -21,6 +21,10 @@ def https_predict(url, session_hash, fn_index, data, headers):
         print(e)
         raise
 
+def get_address():
+    address = requests.get('https://api.ipify.org')
+    print("Address - " + address.text)
+
 def generate(input):
     json_data = json.loads(input)
     data = https_predict(*json_data)
@@ -35,4 +39,5 @@ with gr.Blocks() as main:
 
     submit.click(fn=generate, inputs=[input], outputs=[output], queue=False)
 
+get_address()
 main.launch(show_api=True)
