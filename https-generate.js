@@ -1,6 +1,5 @@
 // Imports
 const express = require("express");
-const https = require("https");
 const axios = require("axios");
 const uuid = require("uuid");
 const cors = require("cors");
