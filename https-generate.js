@@ -20,21 +20,21 @@ const https_predict = (url, session_hash, fn_index, data, headers) => new Promis
   req.on('error', (e) => reject(e)); req.write(JSON.stringify({ data: data, fn_index: fn_index, session_hash: session })); req.end();
 });
 
-const get_version = async () => console.log('[SYSTEM] ⚙️ Version 1');
+function get_version() { console.log('[SYSTEM] ⚙️ Version 1'); };
 
-const get_address = async () => {
+async function get_address() {
   try {
     const response = await axios.get('https://api.ipify.org');
     console.log("[SYSTEM] ☁️ Address - " + response.data);
-  } catch (error) { console.error('[SYSTEM] 🔴 There was an error fetching IP address, ', error); }
-}
+  } catch (error) { console.error('[SYSTEM] 🔴 There was an error fetching IP address, ', error); };
+};
 
-const generate = async (input) => {
+async function generate(input) {
   try {
     const data = await https_predict(...input);
     return JSON.stringify(data);
-  } catch (error) { console.warn('[SYSTEM] 🔴 There was an error generating data', error); throw error; }
-}
+  } catch (error) { console.warn('[SYSTEM] 🔴 There was an error generating data', error); throw error; };
+};
 
 // Initialize
 
