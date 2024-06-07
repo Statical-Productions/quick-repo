@@ -16,7 +16,7 @@ const hf_headers = {"Content-Type": "application/json", "Authorization": `Bearer
 // Functions
 const https_predict = (url, session_hash, fn_index, data, headers) => new Promise((resolve, reject) => {
   const session = session_hash || uuid.v4(), url_regex = url.match(/^(https?:\/\/)([^\/]+)(\/.*)$/);
-  const req = https.request({ hostname: url_regex[2], path: url_regex[3].replace(/\/$/, ''), method: 'POST', headers: headers || {} }, (res) => res.on('data', (chunk) => resolve(JSON.parse(chunk))));
+  const req = https.request({ hostname: url_regex[2], path: url_regex[3].replace(/\/$/, ''), method: 'POST', headers: headers || hf_headers || {} }, (res) => res.on('data', (chunk) => resolve(JSON.parse(chunk))));
   req.on('error', (e) => reject(e)); req.write(JSON.stringify({ data: data, fn_index: fn_index, session_hash: session })); req.end();
 });
 
