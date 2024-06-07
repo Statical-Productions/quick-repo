@@ -20,16 +20,16 @@ const https_predict = (url, session_hash, fn_index, data, headers) => new Promis
   req.on('error', (e) => reject(e)); req.write(JSON.stringify({ data: data, fn_index: fn_index, session_hash: session })); req.end();
 });
 
-async function get_version() console.log('[SYSTEM] ⚙️ Version 1');
+const get_version = async () => console.log('[SYSTEM] ⚙️ Version 1');
 
-async function get_address() {
+const get_address = async () => {
   try {
     const response = await axios.get('https://api.ipify.org');
     console.log("[SYSTEM] ☁️ Address - " + response.data);
   } catch (error) { console.error('[SYSTEM] 🔴 There was an error fetching IP address, ', error); }
 }
 
-async function generate(input) {
+const generate = async (input) => {
   try {
     const data = await https_predict(...input);
     return JSON.stringify(data);
